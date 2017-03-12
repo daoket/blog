@@ -1,12 +1,12 @@
 <template>
-  <div class="song">
-    <span>song lalalalla</span>
+  <div class="news">
+    <span>news lalalalla</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'song',
+  name: 'news',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

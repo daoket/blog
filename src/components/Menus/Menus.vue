@@ -18,14 +18,17 @@ export default {
   data () {
     return {
       todos: [{
+        text: '首页',
+        path: '/'
+      }, {
         text: '故事',
         path: '/story'
       }, {
         text: '音乐',
-        path: '/song'
+        path: '/music'
       }, {
         text: '新闻',
-        path: '/paper'
+        path: '/news'
       }, {
         text: '电影',
         path: '/movie'

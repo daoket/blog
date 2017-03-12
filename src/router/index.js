@@ -3,8 +3,8 @@ import Router from 'vue-router'
 
 import Welcome from '@/components/Welcome/Welcome'
 import Story from '@/components/Story/Story'
-import Song from '@/components/Song/Song'
-import Paper from '@/components/Paper/Paper'
+import Music from '@/components/Music/Music'
+import News from '@/components/News/News'
 import Movie from '@/components/Movie/Movie'
 import View from '@/components/View/View'
 import Me from '@/components/Me/Me'
@@ -20,11 +20,11 @@ export default new Router({
       path: '/story',
       component: Story
     }, {
-      path: '/song',
-      component: Song
+      path: '/music',
+      component: Music
     }, {
-      path: '/paper',
-      component: Paper
+      path: '/news',
+      component: News
     }, {
       path: '/movie',
       component: Movie
@@ -34,6 +34,9 @@ export default new Router({
     }, {
       path: '/me',
       component: Me
+    }, {
+      path: '/*',
+      component: Welcome
     }
   ]
 })
