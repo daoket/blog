@@ -1,6 +1,8 @@
 <template>
   <div class="view">
-    <span>view lalalalla</span>
+    <div class="box" v-for='i in 20'>
+      <img src="./a.jpg"/>
+    </div>
   </div>
 </template>
 
@@ -15,23 +17,15 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+<style lang="stylus">
+.view{
+  .box{
+    margin-left: 2px;
+    margin-top: 2px;
+    float: left;
+    img{
+      width: 300px;
+    }
+  }
 }
 </style>

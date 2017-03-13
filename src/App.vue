@@ -25,5 +25,6 @@ html, body, #app{
 }
 #app{
   display: flex;
+  padding-left: 200px;
 }
 </style>

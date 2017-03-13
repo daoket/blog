@@ -57,6 +57,9 @@ export default {
   width: 200px;
   height: 100%;
   background: #202020;
+  position: fixed;
+  left: 0;
+  top: 0;
   text-align: center;
   .user{
     height: 230px;
