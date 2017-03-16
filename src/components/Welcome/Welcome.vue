@@ -35,12 +35,12 @@ export default {
   justify-content: center;
   align-items: center;
   .dialog{
-    height: 500px;
     width: 550px;
     overflow: hidden;
     background: #fff;
     border-radius: 5px;
     text-align: center;
+    padding-bottom: 30px;
     animation: shake 0.3s 1 linear;
     @keyframes shake{
       0%{transform: translateX(0px);}
@@ -51,7 +51,6 @@ export default {
     }
     img{
       width: 100%;
-      min-height: 320px;
     }
     h1{
       font-size: 30px;
@@ -59,9 +58,17 @@ export default {
       font-weight: bold;
     }
     p{
-      padding: 5px 12px;
+      padding: 8px 12px;
       font-size: 18px;
     }
   }
+}
+@media only screen and (max-width: 800px) {
+	.welcome .dialog{
+	  width: 80%;
+	  p{
+	    font-size: 13px;
+	  }
+	}
 }
 </style>

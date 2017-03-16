@@ -26,5 +26,6 @@ html, body, #app{
 #app{
   display: flex;
   padding-left: 200px;
+  transition: all 1s;
 }
 </style>
