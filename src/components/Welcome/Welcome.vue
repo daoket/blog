@@ -29,7 +29,7 @@ export default {
 .welcome{
   height: 100%;
   width: 100%;
-  background: url(./welcome.jpg) no-repeat;
+  background: url(welcome.jpg) no-repeat;
   background-size: 100% 100%;
   display: flex;
   justify-content: center;
