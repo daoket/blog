@@ -2,12 +2,11 @@
   <div class="news">
     <div class="nav">
       <ul>
-      	<li v-for='it in item' @click='clickLi'>{{it.title}}</li>
+      	<li v-for='it in item' @click='selectNews'>{{it.title}}</li>
       </ul>
     </div>
     <div class="main">
-      <h2>习近平五下上海团五谈创新</h2>
-      <p>2017/3/14 上午8:58:06</p>
+      
     </div>
   </div>
 </template>
@@ -16,6 +15,9 @@
 import $ from 'jquery'
 export default {
   name: 'news',
+  created () {
+
+  },
   data () {
     return {
       item: [{
@@ -26,12 +28,43 @@ export default {
         title: '财经'
       }, {
         title: '科技'
-      }]
+      }],
+      news: []
     }
   },
   methods: {
-    clickLi (e) {
-      $(e.target).addClass('active').siblings().removeClass('active')
+    selectNews () {
+      let [page, self, url] = [0, this, 'https://route.showapi.com/109-35?&needContent=0&needHtml=1&showapi_appid=26601&showapi_sign=adc05e2062a5402b81c563a3ced09208&channelId=5572a108b3cdc86cf39001cd&page=']
+      askData()
+      function askData () {
+        page++
+        $.ajax({
+          type: 'get',
+          url: url + page,
+          async: true,
+          success: function (res) {
+            self.news = res.showapi_res_body.pagebean.contentlist
+            if (self.news.length === 0) {
+              return false
+            }
+            loadNews(self.news)
+          },
+          error: function (err) {
+            console.log(err)
+          }
+        })
+      }
+      function loadNews (data) {
+        for (let i in data) {
+          let html = `<div class="item">
+            <img src="#"/>
+            <p><span class="see">${data[i].source}</span><span class="time">${data[i].pubDate}</span></p>
+            <h3>${data[i].title}</h3>
+            <p class="info">${data[i].html}</p>
+          </div>`
+          $(html).appendTo('.main')
+        }
+      }
     }
   }
 }
@@ -64,6 +97,31 @@ export default {
   }
   .main{
     padding: 12px;
+    .item{
+      width: 300px;
+      border: 1px solid #eee;
+      img{
+        height: 150px;
+      }
+      .see{
+        font-size: 16px;
+        color: green;
+        margin-right: 10px;
+      }
+      h3{
+        color: green;
+        font-size: 20px;
+        margin: 10px 0;
+        width: 100%;
+         overflow: hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+      }
+      .info{
+        line-height: 1.2;
+        margin: 10px 0;
+      }
+    }
   }
 }
 </style>
