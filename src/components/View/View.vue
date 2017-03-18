@@ -19,12 +19,14 @@ export default {
 
 <style lang="stylus">
 .view{
+  text-align: center;
   .box{
     margin-left: 2px;
     margin-top: 2px;
-    float: left;
+    display: inline-block;
     img{
       width: 300px;
+      margin: 10px;
     }
   }
 }

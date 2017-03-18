@@ -89,6 +89,7 @@ export default {
   .show{
     display: none;
     right: -50px;
+    background: rgba(0,0,0,0.5);
   }
   .close{
     right: 0;
@@ -101,10 +102,10 @@ export default {
       width: 150px;
       height: 150px;
       margin: 30px 20px 10px;
-      transition: all 8s;
+      transition: all 80s;
     }
     img:hover{
-      transform: rotate(360deg);
+      transform: rotate(3600deg);
     }
   }
   li{
