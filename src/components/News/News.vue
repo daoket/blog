@@ -57,7 +57,7 @@ export default {
       function loadNews (data) {
         for (let i in data) {
           let html = `<div class="item">
-            <img src="#"/>
+            <img src="${data[i].imageurls.src}"/>
             <p><span class="see">${data[i].source}</span><span class="time">${data[i].pubDate}</span></p>
             <h3>${data[i].title}</h3>
             <p class="info">${data[i].html}</p>
@@ -77,7 +77,7 @@ export default {
   justify-content: flex-start;
   .nav{
     height: 80%;
-    width: 150px;
+    width: 200px;
     text-align: center;
     border-right: 5px solid #B44847;
     li{
@@ -111,15 +111,11 @@ export default {
       h3{
         color: green;
         font-size: 20px;
-        margin: 10px 0;
-        width: 100%;
-         overflow: hidden;
-         white-space: nowrap;
-         text-overflow: ellipsis;
+        margin: 10px;
       }
-      .info{
-        line-height: 1.2;
-        margin: 10px 0;
+      p{
+        line-height: 1.4;
+        margin: 10px;
       }
     }
   }
