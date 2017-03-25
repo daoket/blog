@@ -1,5 +1,5 @@
 <template>
-<div class="story" @scroll='scrollLoad'>
+<div class="story">
   <div v-for='d in data' class="item">
     <a :href="setLink(d.link)" target="_blank">
       <img :src="setSrc(d.img)"/>
@@ -81,7 +81,6 @@ export default {
 .story{
   width: 100%;
   height: 100%;
-  padding: 10px;
   .item{
     height: 140px;
     width: 400px;

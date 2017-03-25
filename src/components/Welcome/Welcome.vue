@@ -1,7 +1,7 @@
 <template>
   <div class="welcome">
     <div class="dialog">
-      <img src="./dialog.jpg"/>
+      <img src="./girl.jpg"/>
       <h1>{{title}}</h1>
       <p>{{msg1}}</p>
       <p>{{msg2}}</p>
@@ -29,7 +29,7 @@ export default {
 .welcome{
   height: 100%;
   width: 100%;
-  background: url(welcome.jpg) no-repeat;
+  background: url(./welcome.jpg) no-repeat;
   background-size: 100% 100%;
   display: flex;
   justify-content: center;
@@ -41,6 +41,7 @@ export default {
     border-radius: 5px;
     text-align: center;
     padding-bottom: 30px;
+    opacity: 0.8;
     animation: shake 0.3s 1 linear;
     @keyframes shake{
       0%{transform: translateX(0px);}

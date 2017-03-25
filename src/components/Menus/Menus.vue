@@ -4,9 +4,9 @@
     <span class="control close" @click='close()'>×</span>
     <div class="user">
       <a target="_blank" href="https://github.com/daoket"><img src="./user.jpg"/></a>
-      <p>daoket</p>
+      <p>东都花神</p>
     </div>
-    <ul>
+    <ul class="aside">
     	<li v-for='todo in todos'>
     	  <router-link :to='setPath(todo.path)'>{{todo.text}}</router-link>
     	</li>
@@ -66,8 +66,8 @@ export default {
 <style lang="stylus">
 .menus{
   color: #999;
-  font-size: 18px;
-  width: 200px;
+  font-size: 16px;
+  width: 230px;
   height: 100%;
   background: #202020;
   position: fixed;
@@ -75,6 +75,10 @@ export default {
   top: 0;
   transition: all 1s;
   text-align: center;
+  .aside .active{
+    color: #fff;
+    background: #1A1A1A;
+  }
   .control{
     color: #fff;
     height: 50px;
@@ -102,15 +106,15 @@ export default {
       width: 150px;
       height: 150px;
       margin: 30px 20px 10px;
-      transition: all 80s;
+      transition: all 0.5s;
     }
     img:hover{
-      transform: rotate(3600deg);
+      transform: rotate(360deg);
     }
   }
   li{
-    height: 60px;
-    margin: 5px;
+    height: 45px;
+    margin: 15px 0;
     a{
       height: 100%;
       width: 100%;

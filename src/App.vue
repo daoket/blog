@@ -25,7 +25,7 @@ html, body, #app{
 }
 #app{
   display: flex;
-  padding-left: 200px;
+  padding-left: 230px;
   transition: all 1s;
 }
 </style>
