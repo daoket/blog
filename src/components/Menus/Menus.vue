@@ -22,7 +22,7 @@ export default {
     return {
       todos: [{
         text: '首页',
-        path: '/'
+        path: '/welcome'
       }, {
         text: '故事',
         path: '/story'

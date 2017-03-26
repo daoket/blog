@@ -1,13 +1,7 @@
 <template>
   <div class="news">
-    <div class="nav">
-      <ul>
-      	<li v-for='it in item' @click='selectNews'>{{it.title}}</li>
-      </ul>
-    </div>
-    <div class="main">
-      
-    </div>
+    <div class="main"></div>
+    <button class="more" @click='loadMore' v-show='false'>加载更多</button>
   </div>
 </template>
 
@@ -15,9 +9,6 @@
 import $ from 'jquery'
 export default {
   name: 'news',
-  created () {
-
-  },
   data () {
     return {
       item: [{
@@ -29,14 +20,47 @@ export default {
       }, {
         title: '科技'
       }],
-      news: []
+      news: [],
+      url: 'https://route.showapi.com/109-35?&needContent=0&needHtml=1&showapi_appid=26601&showapi_sign=adc05e2062a5402b81c563a3ced09208&channelId=5572a108b3cdc86cf39001cd&page='
+    }
+  },
+  created () {
+    let [page, self] = [0, this]
+    askData(this.url)
+    function askData (url) {
+      page++
+      $.ajax({
+        type: 'get',
+        url: url + page,
+        async: true,
+        success: function (res) {
+          self.news = res.showapi_res_body.pagebean.contentlist
+          if (self.news.length === 0) {
+            return false
+          }
+          loadNews(self.news)
+        },
+        error: function (err) {
+          console.log(err)
+        }
+      })
+    }
+    function loadNews (data) {
+      for (let i in data) {
+        let html = `<div class="item">
+          <p><span class="see">${data[i].source}</span><span class="time">${data[i].pubDate}</span></p>
+          <h3>${data[i].title}</h3>
+          <p class="info">${data[i].html}</p>
+        </div>`
+        $(html).appendTo('.main')
+      }
     }
   },
   methods: {
-    selectNews () {
-      let [page, self, url] = [0, this, 'https://route.showapi.com/109-35?&needContent=0&needHtml=1&showapi_appid=26601&showapi_sign=adc05e2062a5402b81c563a3ced09208&channelId=5572a108b3cdc86cf39001cd&page=']
-      askData()
-      function askData () {
+    loadMore () {
+      let [page, self] = [1, this]
+      askData(this.url)
+      function askData (url) {
         page++
         $.ajax({
           type: 'get',
@@ -57,7 +81,6 @@ export default {
       function loadNews (data) {
         for (let i in data) {
           let html = `<div class="item">
-            <img src="${data[i].imageurls.src}"/>
             <p><span class="see">${data[i].source}</span><span class="time">${data[i].pubDate}</span></p>
             <h3>${data[i].title}</h3>
             <p class="info">${data[i].html}</p>
@@ -72,34 +95,10 @@ export default {
 
 <style lang="stylus">
 .news{
-  padding-top: 60px;
-  display: flex;
-  justify-content: flex-start;
-  .nav{
-    height: 80%;
-    width: 200px;
-    text-align: center;
-    border-right: 5px solid #B44847;
-    li{
-      height: 45px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      font-size: 20px;
-    }
-    .active{
-      color: #fff;
-      background: #ED4040;
-      border-radius: 4px;
-      margin: 0 20px;
-    }
-  }
   .main{
-    padding: 12px;
-    .item{
-      width: 300px;
-      border: 1px solid #eee;
+     .item{
+      margin: 10px;
+      border-bottom: 1px solid red;
       img{
         height: 150px;
       }

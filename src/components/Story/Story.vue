@@ -16,6 +16,11 @@
 import $ from 'jquery'
 export default {
   name: 'story',
+  data () {
+    return {
+      data: []
+    }
+  },
   created () {
     let [self, page, request, url] = [this, 0, true, 'https://route.showapi.com/955-1?&showapi_appid=26601&type=dp&showapi_sign=adc05e2062a5402b81c563a3ced09208&page=']
     if (document.body.scrollHeight === window.innerHeight) {
@@ -59,11 +64,6 @@ export default {
              </div>`
         $(html).appendTo('.story')
       }
-    }
-  },
-  data () {
-    return {
-      data: []
     }
   },
   methods: {

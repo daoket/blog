@@ -1,17 +1,56 @@
 <template>
   <div class="view">
-    <div class="box" v-for='i in 20'>
-      <img src="./a.jpg"/>
+    <div class="main">
+      
     </div>
+    <button class="loadMore" @click='loadMore'>{{loadBtn}}</button>
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'view',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      loadBtn: '加载更多 ...'
+    }
+  },
+  created () {
+    let [page, flag] = [0, true]
+    var url = 'https://api.unsplash.com/photos?client_id=80f66654628683dc7a20a3f2b44a93f8a9f0afaa41be7c7c392c5648dc6bb035&page='
+    if (flag) {
+      askData(url)
+    }
+    function askData (url) {
+      page++
+      $.ajax({
+        type: 'get',
+        url: url + page,
+        async: true,
+        success: function (res) {
+          if (res.length === 0) {
+            flag = false
+          }
+          loadImg(res)
+        },
+        error: function (err) {
+          console.log(err)
+        }
+      })
+    }
+    function loadImg (data) {
+      for (let s of data) {
+        var html = `<div class="box">
+                    <img src="${s.urls.small}"/>
+                  </div>`
+        $(html).appendTo('.main')
+      }
+    }
+  },
+  methods: {
+    loadMore () {
+      alert('没有更多了，(；′⌒`)')
     }
   }
 }
@@ -21,13 +60,23 @@ export default {
 .view{
   text-align: center;
   .box{
-    margin-left: 2px;
-    margin-top: 2px;
+    padding: 1px;
     display: inline-block;
     img{
       width: 300px;
-      margin: 10px;
     }
+  }
+  .loadMore{
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: #ED4040;
+    border: 1px solid #ED4040;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    margin: 40px 0;
   }
 }
 </style>

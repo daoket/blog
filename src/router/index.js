@@ -18,6 +18,9 @@ export default new Router({
       path: '/',
       component: Welcome
     }, {
+      path: '/welcome',
+      component: Welcome
+    }, {
       path: '/story',
       component: Story
     }, {
