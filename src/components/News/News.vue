@@ -2,11 +2,13 @@
   <div class="news">
     <div class="main"></div>
     <button class="more" @click='loadMore' v-show='false'>加载更多</button>
+    <Load></Load>
   </div>
 </template>
 
 <script>
 import $ from 'jquery'
+import Load from '../Load/Load'
 export default {
   name: 'news',
   data () {
@@ -38,6 +40,7 @@ export default {
           if (self.news.length === 0) {
             return false
           }
+          $('.load').hide()
           loadNews(self.news)
         },
         error: function (err) {
@@ -89,6 +92,9 @@ export default {
         }
       }
     }
+  },
+  components: {
+    Load
   }
 }
 </script>

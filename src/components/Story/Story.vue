@@ -9,11 +9,13 @@
       </div>
     </a>
   </div>
+  <Load></Load>
 </div>
 </template>
 
 <script>
 import $ from 'jquery'
+import Load from '../Load/Load'
 export default {
   name: 'story',
   data () {
@@ -45,6 +47,7 @@ export default {
             return false
           }
           loadStory(self.data)
+          $('.load').hide()
         },
         error: function (err) {
           console.log(err)
@@ -73,6 +76,9 @@ export default {
     setSrc (src) {
       return src
     }
+  },
+  components: {
+    Load
   }
 }
 </script>
@@ -84,7 +90,6 @@ export default {
   .item{
     height: 140px;
     width: 400px;
-    padding: 5px;
     border: 1px solid #eee;
     float: left;
     margin: 10px;

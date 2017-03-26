@@ -67,7 +67,7 @@ export default {
 .menus{
   color: #999;
   font-size: 16px;
-  width: 230px;
+  width: 200px;
   height: 100%;
   background: #202020;
   position: fixed;

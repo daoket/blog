@@ -3,17 +3,20 @@
     <div class="main">
       
     </div>
-    <button class="loadMore" @click='loadMore'>{{loadBtn}}</button>
+    <button class="loadMore" @click='loadMore' v-show='show'>{{loadBtn}}</button>
+    <Load></Load>
   </div>
 </template>
 
 <script>
 import $ from 'jquery'
+import Load from '../Load/Load'
 export default {
   name: 'view',
   data () {
     return {
-      loadBtn: '加载更多 ...'
+      loadBtn: '加载更多 ...',
+      show: false
     }
   },
   created () {
@@ -29,6 +32,7 @@ export default {
         url: url + page,
         async: true,
         success: function (res) {
+          $('.load').hide()
           if (res.length === 0) {
             flag = false
           }
@@ -47,11 +51,17 @@ export default {
         $(html).appendTo('.main')
       }
     }
+    setTimeout(function () {
+      this.show = true
+    }, 1000)
   },
   methods: {
     loadMore () {
       alert('没有更多了，(；′⌒`)')
     }
+  },
+  components: {
+    Load
   }
 }
 </script>

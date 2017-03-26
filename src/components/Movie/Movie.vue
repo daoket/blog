@@ -1,18 +1,22 @@
 <template>
   <div class="movie">
+    <h2 class="top">{{title}}</h2>
     <div class="main">
       
     </div>
     <button class="loadMore" v-show='fasle'>{{loadBtn}}</button>
+    <Load></Load>
   </div>
 </template>
 
 <script>
 import $ from 'jquery'
+import Load from '../Load/Load'
 export default {
   name: 'movie',
   data () {
     return {
+      title: '豆瓣电影TOP250',
       loadBtn: '加载更多 。。。'
     }
   },
@@ -28,6 +32,7 @@ export default {
         async: true,
         success: function (res) {
           loadMovie(res.subjects)
+          $('.load').hide()
         },
         error: function (err) {
           console.log(err)
@@ -52,6 +57,9 @@ export default {
         $(html).appendTo('.main')
       }
     }
+  },
+  components: {
+    Load
   }
 }
 </script>
@@ -59,47 +67,70 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus">
 .movie{
-  .item{
-    height: 444px;
-    width: 300px;
+  .top{
+    height: 60px;
     display: inline-block;
-    margin: 10px 5px 5px 10px;
-    position: relative;
-    .title{
-      height: 40px;
-      width: 100%;
-      color: #fff;
-      font-size: 18px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0,0,0,0.5);
-    }
-    img{
-      height: 100%;
-      width: 100%;
-    }
-    .msg{
-      width: 100%;
-      height: 200px;
-      color: #fff;
-      background: rgba(0,0,0,0.5);
-      position: absolute;
-      bottom: 0;    
-      left: 0;
-      p{
-        padding: 5px 12px;
+    color: #3377AA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    background-color: #F0F3F5;
+  }
+  .main{
+    text-align: center;
+    .item{
+      height: 444px;
+      width: 300px;
+      display: inline-block;
+      margin: 10px 5px 5px 10px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      .title{
+        height: 40px;
+        width: 100%;
+        color: #fff;
+        font-size: 18px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,0.5);
+      }
+      img{
+        height: 100%;
+        width: 100%;
+      }
+      .msg{
+        width: 100%;
+        height: 200px;
+        color: #fff;
+        background: rgba(0,0,0,0.5);
+        position: absolute;
+        bottom: 0;    
+        left: 0;
+        text-align: left;
+        transition: all 1s;
+        transform: translateY(90px);
+        p{
+          padding: 5px 12px;
+        }
+      }
+      .loadMore{
+        height: 30px;
+        width: 200px;
+        background-color: #ED4040;
+        border: 1px solid #ED4040;
+        border-radius: 4px;
       }
     }
-    .loadMore{
-      height: 30px;
-      width: 200px;
-      background-color: #ED4040;
-      border: 1px solid #ED4040;
-      border-radius: 4px;
+    .item:hover{
+      .msg{
+        transform: translateY(0);
+      }
     }
   }
 }

@@ -7,10 +7,12 @@
       <p>{{msg2}}</p>
       <p>{{msg3}}</p>
     </div>
+    <Load></Load>
   </div>
 </template>
 
 <script>
+import Load from '../Load/Load'
 export default {
   name: 'welcome',
   data () {
@@ -20,6 +22,14 @@ export default {
       msg2: '一个人有两个我，一个在黑暗中醒着，一个在光明中睡着。',
       msg3: '若我会见到你，事隔经年。我如何向你招呼，以眼泪，以沉默。'
     }
+  },
+  created () {
+    window.onload = function () {
+      document.querySelector('.load').style.display = 'none'
+    }
+  },
+  components: {
+    Load
   }
 }
 </script>
