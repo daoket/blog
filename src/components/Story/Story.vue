@@ -18,23 +18,26 @@ export default {
     }
   },
   created () {
-    let [self, page, request, url] = [this, 0, true, 'https://route.showapi.com/955-1?&showapi_appid=26601&type=dp&showapi_sign=adc05e2062a5402b81c563a3ced09208&page=']
+    let type = 'dp'
+    let storyUrl = 'https://route.showapi.com/955-1'
+    let showapi = '&showapi_appid=34477&showapi_sign=cfa5957a730f43d38886bd16469b2a86'
+    let [self, page, request] = [this, 0, true]
     setInterval(function () {
       if (document.body.scrollHeight <= window.innerHeight) {
-        requestData(url)
+        requestData(storyUrl)
       }
     }, 500)
     window.onscroll = function () {
       var leaveBottom = document.body.scrollHeight - document.body.scrollTop - window.innerHeight
       if (leaveBottom < 2 && request) {
-        requestData(url)
+        requestData(storyUrl)
       }
     }
     function requestData (url) {
       page++
       $.ajax({
         type: 'get',
-        url: url + page,
+        url: url + '?page=' + page + '&type=' + type + showapi,
         async: true,
         success: function (res) {
           self.data = res.showapi_res_body.pagebean.contentlist

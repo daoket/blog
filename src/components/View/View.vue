@@ -22,9 +22,11 @@ export default {
   created () {
     let [page, flag] = [0, true]
     var url = 'https://api.unsplash.com/photos?client_id=80f66654628683dc7a20a3f2b44a93f8a9f0afaa41be7c7c392c5648dc6bb035&page='
-    if (flag) {
-      askData(url)
-    }
+    setInterval(function () {
+      if (document.body.scrollHeight <= window.innerHeight && flag) {
+        askData(url)
+      }
+    }, 500)
     function askData (url) {
       page++
       $.ajax({

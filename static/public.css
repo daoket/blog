@@ -74,7 +74,7 @@ body {
   -webkit-appearance: none;
 }
 ::-webkit-scrollbar:vertical {
-  width: 5px;
+  width: 10px;
 }
 ::-webkit-scrollbar:horizontal {
   height: 0;

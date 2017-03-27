@@ -21,8 +21,8 @@ export default {
     }
   },
   created () {
-    let url = 'https://api.douban.com/v2/movie/top250'
-    askData(url)
+    let movieUrl = 'https://api.douban.com/v2/movie/top250?start=0'
+    askData(movieUrl)
     function askData (url) {
       $.ajax({
         type: 'get',
