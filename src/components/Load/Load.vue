@@ -22,7 +22,7 @@ export default {
   position: fixed;
   left: 200px;
   top: 0;
-  background: rgba(0,0,0,0.5);
+  background: #fff;
   .spinner {
     width: 60px;
     height: 60px;

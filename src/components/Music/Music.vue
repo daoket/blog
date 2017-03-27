@@ -2,7 +2,7 @@
   <div class="music">
     <div class="song">
       <p class="msg"><span>歌曲</span><span>歌手</span><span>时长</span></p>
-      <ul>
+      <ul class="list">
       	<li class="msg"><span>演员</span><span>薛之谦</span><span>5：12</span></li>
       </ul>
     </div>
@@ -50,6 +50,12 @@ export default {
       margin: 5px;
       display: flex;
       justify-content: space-around;
+    }
+    .list{
+      height: 500px;
+      width: 500px;
+      border: 1px solid #ED4040;
+      background: url(../../assets/a.jpg);
     }
   }
 }
