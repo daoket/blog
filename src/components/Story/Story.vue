@@ -64,7 +64,7 @@ export default {
                 </div>
               </a>
              </div>`
-        $(html).appendTo('.main')
+        $(html).appendTo('.story .main')
       }
     }
   },

@@ -55,7 +55,7 @@ export default {
           <h3>${data[i].title}</h3>
           <p class="info">${data[i].html}</p>
         </div>`
-        $(html).appendTo('.main')
+        $(html).appendTo('.news .main')
       }
     }
   },

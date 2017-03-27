@@ -50,7 +50,7 @@ export default {
         var html = `<div class="box">
                     <img src="${s.urls.small}"/>
                   </div>`
-        $(html).appendTo('.main')
+        $(html).appendTo('.view .main')
       }
     }
     setTimeout(function () {

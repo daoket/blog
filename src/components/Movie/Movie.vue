@@ -54,7 +54,7 @@ export default {
                   <p>年代：${s.year}</p>
                 </div>
               </div>`
-        $(html).appendTo('.main')
+        $(html).appendTo('.movie .main')
       }
     }
   },
