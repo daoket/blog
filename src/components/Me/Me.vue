@@ -1,16 +1,26 @@
 <template>
   <div class="me">
     <a class="resume" href="https://daoket.github.io/resume/index.html" target="_blank">{{resume}}</a>
+    <Load></Load>
   </div>
 </template>
 
 <script>
+import Load from '../Load/Load'
 export default {
   name: 'me',
   data () {
     return {
       resume: '我的简历'
     }
+  },
+  created () {
+    window.onload = function () {
+      document.querySelector('.load').style.display = 'none'
+    }
+  },
+  components: {
+    Load
   }
 }
 </script>

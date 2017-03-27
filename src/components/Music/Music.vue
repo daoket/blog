@@ -1,12 +1,20 @@
 <template>
   <div class="music">
+    <img class="bg" src="./blur.jpg"/>
     <div class="song">
-      <p class="msg"><span>歌曲</span><span>歌手</span><span>时长</span></p>
-      <ul class="list">
-      	<li class="msg"><span>演员</span><span>薛之谦</span><span>5：12</span></li>
-      </ul>
+      <div class="list">
+        <p class="msg"><span>歌曲</span><span>歌手</span><span>时长</span></p>
+        <ul v-for='i in 20'>
+          <li class="msg"><span>演员</span><span>薛之谦</span><span>5：12</span></li>
+        </ul>
+      </div>
+      <div class="lyric">
+        <img src="./a.jpg" alt="" />
+        <p>歌曲名: 演员</p>
+        <p>歌手: 薛之谦</p>
+        <p>专辑名: 绅士</p>
+      </div>
     </div>
-    <img src="./blur.jpg"/>
   </div>
 </template>
 
@@ -21,7 +29,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus">
 .music{
   height: 100%;
@@ -29,7 +36,7 @@ export default {
   overflow: hidden;
   position: relative;
   text-align: center;
-  img{
+  .bg{
     height: 100%;
     width: 100%;
     filter: blur(100px);
@@ -38,13 +45,15 @@ export default {
     top: 0;
   }
   .song{
-    height: 500px;
-    width: 800px;
+    height: 100%;
+    width: 100%;
     position: absolute;
-    left: 50px;
-    top: 100px;
+    left: 0;
+    top: 0;
+    padding-top: 50px;
     z-index: 99;
-    /*border: 1px solid red;*/
+    display: flex;
+    justify-content: space-around;
     .msg{
       color: #D9D8D8;
       margin: 5px;
@@ -52,10 +61,25 @@ export default {
       justify-content: space-around;
     }
     .list{
-      height: 500px;
+      height: 600px;
+      width: 800px;
+      overflow-y: scroll;
+      li{
+        margin: 20px;
+      }
+    }
+    .lyric{
       width: 500px;
-      border: 1px solid #ED4040;
-      background: url(../../assets/a.jpg);
+      height: 600px;
+      color: #fff;
+      /*border: 1px solid #eee;*/
+      img{
+        height: 200px;
+        width: 200px;
+      }
+      p{
+        margin: 15px;
+      }
     }
   }
 }
