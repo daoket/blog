@@ -1,21 +1,21 @@
-# blog
-
-> A Vue.js project
-
-## Build Setup
+## 创建步骤
 
 ``` bash
+1. git clone https://github.com/daoket/blog.git
+
 # install dependencies
-npm install
+2. npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+3. npm run dev
 
 # build for production with minification
-npm run build
+4. npm run build
 
 # build for production and view the bundle analyzer report
-npm run build --report
+5. npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 参考
+> - [vue官网](http://cn.vuejs.org/)
+> - [vue-loader](https://router.vuejs.org/)
