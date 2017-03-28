@@ -3,27 +3,56 @@
     <img class="bg" src="./blur.jpg"/>
     <div class="song">
       <div class="list">
-        <p class="msg"><span>歌曲</span><span>歌手</span><span>时长</span></p>
-        <ul v-for='i in 20'>
-          <li class="msg"><span>演员</span><span>薛之谦</span><span>5：12</span></li>
+        <p class="msg"><span class="name">歌曲</span><span class="singer">歌手</span><span class="time">时长</span></p>
+        <ul class="main" >
+          <li class="msg" v-for='item in items'>
+            <span class="name">{{item.songname}}</span>
+            <span class="singer">{{item.singername}}</span>
+            <span class="time">{{item.seconds}}</span>
+          </li>
         </ul>
       </div>
       <div class="lyric">
-        <img src="./a.jpg" alt="" />
-        <p>歌曲名: 演员</p>
-        <p>歌手: 薛之谦</p>
-        <p>专辑名: 绅士</p>
+        <img :src="songImg" alt="" />
+        <p>歌曲名: {{items[0].songname}}</p>
+        <p>歌手: {{items[0].singername}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'music',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      items: []
+    }
+  },
+  created () {
+    let self = this
+    let musicUrl = 'https://route.showapi.com/213-4?topid=5'
+    let showapi = '&type=dp&showapi_appid=34477&showapi_sign=cfa5957a730f43d38886bd16469b2a86'
+    askMusic(musicUrl)
+    function askMusic (url) {
+      $.ajax({
+        type: 'get',
+        url: url + showapi,
+        async: true,
+        success: function (res) {
+          let data = res.showapi_res_body.pagebean.songlist
+          self.items = data
+        },
+        error: function (err) {
+          console.log(err)
+        }
+      })
+    }
+  },
+  computed: {
+    songImg () {
+      return this.items[0].albumpic_big
     }
   }
 }
@@ -59,13 +88,28 @@ export default {
       margin: 5px;
       display: flex;
       justify-content: space-around;
+      .name{
+        padding-left: 15px;
+      }
     }
     .list{
       height: 600px;
       width: 800px;
       overflow-y: scroll;
+      font-size: 14px;
+      text-align: left;
       li{
         margin: 20px;
+        cursor: pointer;
+      }
+      .name{
+        width: 60%;
+      }
+      .singer{
+        width: 30%;
+      }
+      .time{
+        width: 10%;
       }
     }
     .lyric{
