@@ -1,7 +1,5 @@
 <template>
   <div class="menus hide">
-    <span class="control show" @click='show()'>=</span>
-    <span class="control close" @click='close()'>×</span>
     <div class="user">
       <a target="_blank" href="https://github.com/daoket"><img src="./user.jpg"/></a>
       <p>东都花神</p>
@@ -15,7 +13,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
 export default {
   name: 'menus',
   data () {
@@ -47,16 +44,6 @@ export default {
   methods: {
     setPath (path) {
       return path
-    },
-    show () {
-      $('.show').css('display', 'none')
-      $('#app').css('padding-left', '200px')
-      $('.menus').css('transform', 'translateX(0)')
-    },
-    close () {
-      $('.show').css('display', 'flex')
-      $('#app').css('padding-left', '0')
-      $('.menus').css('transform', 'translateX(-100%)')
     }
   }
 }
@@ -73,30 +60,12 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
+  overflow: scroll;
   transition: all 1s;
   text-align: center;
   .aside .active{
     color: #fff;
     background: #1A1A1A;
-  }
-  .control{
-    color: #fff;
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-  }
-  .show{
-    display: none;
-    right: -50px;
-    background: rgba(0,0,0,0.5);
-  }
-  .close{
-    right: 0;
   }
   .user{
     height: 230px;
@@ -126,16 +95,5 @@ export default {
       color: #fff;
     }
   }
-}
-@media only screen and (max-width: 800px) {
-  #app{
-    padding-left: 0;
-  }
-	.hide{
-	  transform: translateX(-100%);
-	  .show{
-	    display: flex;
-	  }
-	}
 }
 </style>
