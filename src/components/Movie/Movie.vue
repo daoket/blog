@@ -67,8 +67,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus">
 .movie{
+  width: 100%;
   .top{
     height: 60px;
+    width: 100%;
     display: inline-block;
     color: #3377AA;
     display: flex;
