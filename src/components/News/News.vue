@@ -23,7 +23,7 @@ export default {
         title: '科技'
       }],
       news: [],
-      url: 'https://route.showapi.com/109-35?&needContent=0&needHtml=1&showapi_appid=26601&showapi_sign=adc05e2062a5402b81c563a3ced09208&channelId=5572a108b3cdc86cf39001cd&page='
+      url: 'https://route.showapi.com/109-35?&needContent=0&needHtml=1&showapi_appid=34477&showapi_sign=cfa5957a730f43d38886bd16469b2a86&channelId=5572a108b3cdc86cf39001cd&page='
     }
   },
   created () {

@@ -2,9 +2,21 @@
   <div class="movie">
     <h2 class="top">{{title}}</h2>
     <div class="main">
-      
+      <div class="item" v-for='m in movieData'>
+        <h2 class='title'>{{m.title}}</h2>
+        <img :src="movieImg(m.images.large)"/>
+        <div class='msg'>
+          <!--<p>排名：</p>-->
+          <p>评分：{{m.rating.average}}</p>
+          <p>导演：{{m.directors[0].name}}</p>
+          <p>主演：{{m.casts[0].name}}</p>
+          <p>原名：{{m.original_title}}</p>
+          <p>看过人数：{{m.collect_count}}</p>
+          <p>年代：{{m.year}}</p>
+        </div>
+      </div>
     </div>
-    <button class="loadMore" v-show='fasle'>{{loadBtn}}</button>
+    <button class="loadMore" v-show='btnStatus'>{{loadBtn}}</button>
     <Load></Load>
   </div>
 </template>
@@ -17,10 +29,13 @@ export default {
   data () {
     return {
       title: '豆瓣电影TOP250',
-      loadBtn: '加载更多 。。。'
+      loadBtn: '加载更多 。。。',
+      btnStatus: false,
+      movieData: []
     }
   },
   created () {
+    let self = this
     let movieUrl = 'https://api.douban.com/v2/movie/top250?start=0'
     askData(movieUrl)
     function askData (url) {
@@ -31,31 +46,18 @@ export default {
         url: url,
         async: true,
         success: function (res) {
-          loadMovie(res.subjects)
           $('.load').hide()
+          self.movieData = res.subjects
         },
         error: function (err) {
           console.log(err)
         }
       })
     }
-    function loadMovie (data) {
-      for (let s of data) {
-        var html = `<div class="item">
-                <h2 class='title'>${s.title}</h2>
-                <img src="${s.images.large}"/>
-                <div class='msg'>
-                  <p>排名：</p>
-                  <p>评分：${s.rating.average}</p>
-                  <p>导演：${s.directors[0].name}</p>
-                  <p>主演：${s.casts[0].name}</p>
-                  <p>原名：${s.original_title}</p>
-                  <p>看过人数：${s.collect_count}</p>
-                  <p>年代：${s.year}</p>
-                </div>
-              </div>`
-        $(html).appendTo('.movie .main')
-      }
+  },
+  methods: {
+    movieImg (url) {
+      return url
     }
   },
   components: {

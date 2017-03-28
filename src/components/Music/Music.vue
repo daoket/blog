@@ -18,6 +18,9 @@
         <p>歌手: {{items[0].singername}}</p>
       </div>
     </div>
+    <div class="play">
+      <audio :src="songPlay" controls="controls" autoplay="autoplay"></audio>
+    </div>
   </div>
 </template>
 
@@ -53,6 +56,9 @@ export default {
   computed: {
     songImg () {
       return this.items[0].albumpic_big
+    },
+    songPlay () {
+      return this.items[0].url
     }
   }
 }
@@ -124,6 +130,15 @@ export default {
       p{
         margin: 15px;
       }
+    }
+  }
+  .play{
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    audio{
+      height: 80px;
+      width: 800px;
     }
   }
 }
