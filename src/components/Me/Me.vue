@@ -31,8 +31,8 @@ export default {
   height: 100%;
   width: 100%;
   display: flex;
-  /*background: url(https://daoket.github.io/resume/images/blog/me_bg.jpg) no-repeat;*/
-  background: url(http://1.wtniu.applinzi.com/niu/resume/images/blog/me_bg.jpg) no-repeat;
+  background: url(https://daoket.github.io/resume/images/blog/me_bg.jpg) no-repeat;
+  /*background: url(http://1.wtniu.applinzi.com/niu/resume/images/blog/me_bg.jpg) no-repeat;*/
   background-size: 100% 100%;
   justify-content: center;
   align-items: center;
