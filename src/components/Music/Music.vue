@@ -9,6 +9,7 @@
             <span class="name">{{item.songname}}</span>
             <span class="singer">{{item.singername}}</span>
             <span class="time">{{item.seconds}}</span>
+            <span class="playBtn">播放</span>
           </li>
         </ul>
       </div>
@@ -19,7 +20,7 @@
       </div>
     </div>
     <div class="play">
-      <audio :src="songPlay" controls="controls" autoplay="autoplay"></audio>
+      <audio :src="songPlay" controls="" autoplay="autoplay"></audio>
     </div>
   </div>
 </template>
@@ -105,8 +106,15 @@ export default {
       font-size: 14px;
       text-align: left;
       li{
-        margin: 20px;
         cursor: pointer;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      li:hover .playBtn{
+        display: block;
       }
       .name{
         width: 60%;
@@ -116,6 +124,15 @@ export default {
       }
       .time{
         width: 10%;
+      }
+      .playBtn{
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        left: 40%;
+        top: 0;
+        background: rgba(112,136,144,1);
+        z-index: 999;
       }
     }
     .lyric{
@@ -136,6 +153,7 @@ export default {
     position: absolute;
     bottom: 10%;
     left: 10%;
+    z-index: 99;
     audio{
       height: 80px;
       width: 800px;
