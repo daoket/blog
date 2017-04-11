@@ -9,7 +9,10 @@
             <span class="name">{{item.songname}}</span>
             <span class="singer">{{item.singername}}</span>
             <span class="time">{{item.seconds}}</span>
-            <span class="playBtn">播放</span>
+            <span class="playBtn" @click='playBtn(item.url)'>
+              <img src="./blur.jpg"/>
+              <span>播放</span>
+            </span>
           </li>
         </ul>
       </div>
@@ -20,7 +23,7 @@
       </div>
     </div>
     <div class="play">
-      <audio :src="songPlay" controls="" autoplay="autoplay"></audio>
+      <audio :src="songPlay" id="song" controls="" autoplay="autoplay"></audio>
     </div>
   </div>
 </template>
@@ -61,6 +64,12 @@ export default {
     songPlay () {
       return this.items[0].url
     }
+  },
+  methods: {
+    playBtn (url) {
+      var song = document.getElementById('song')
+      song.src = url
+    }
   }
 }
 </script>
@@ -100,7 +109,7 @@ export default {
       }
     }
     .list{
-      height: 600px;
+      height: 450px;
       width: 800px;
       overflow-y: scroll;
       font-size: 14px;
@@ -127,12 +136,28 @@ export default {
       }
       .playBtn{
         height: 40px;
-        width: 40px;
+        width: 60px;
         position: absolute;
-        left: 40%;
+        left: 45%;
         top: 0;
-        background: rgba(112,136,144,1);
         z-index: 999;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: 40px;
+          filter: blur(40px);
+        }
+        span{
+          position: absolute;
+          color: #fff;
+          font-size: 16px;
+          top: 0;
+          left: 0;
+          display: inline-block;
+          height: 40px;
+          line-height: 40px;
+          text-indent: 15px;
+        }
       }
     }
     .lyric{
