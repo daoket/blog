@@ -18,7 +18,6 @@ export default {
     }
   },
   created () {
-    let type = 'dp'
     let storyUrl = 'https://route.showapi.com/955-1'
     let showapi = '&showapi_appid=34477&showapi_sign=cfa5957a730f43d38886bd16469b2a86'
     let [self, page, request] = [this, 0, true]
@@ -29,7 +28,7 @@ export default {
     }, 500)
     window.onscroll = function () {
       var leaveBottom = document.body.scrollHeight - document.body.scrollTop - window.innerHeight
-      if (leaveBottom < 2 && request) {
+      if (leaveBottom < 1 && request) {
         requestData(storyUrl)
       }
     }
@@ -37,7 +36,7 @@ export default {
       page++
       $.ajax({
         type: 'get',
-        url: url + '?page=' + page + '&type=' + type + showapi,
+        url: url + '?page=' + page + '&type=dp' + showapi,
         async: true,
         success: function (res) {
           self.data = res.showapi_res_body.pagebean.contentlist
@@ -82,7 +81,7 @@ export default {
     text-align: center;
     .item{
       height: 140px;
-      width: 400px;
+      /*width: 400px;*/
       border: 1px solid #eee;
       display: inline-block;
       margin: 10px;
@@ -111,7 +110,13 @@ export default {
   }
   img{
     max-width: 140px;
+    max-height: 140px;
     margin-right: 10px;
   }
+}
+@media only screen and (min-width: 600px) {
+	.story .main .item{
+	  width: 400px;
+	}
 }
 </style>

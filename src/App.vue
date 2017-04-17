@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Menus></Menus>
-    <span class="open" @click='showMenu'>></span>
+    <span class="open" @click='showMenu'>
+      <div class="line" v-for='i in 3'></div>
+    </span>
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
@@ -39,17 +41,23 @@ html, body, #app{
   .open{
       display: none;
       color: #fff;
-      height: 100px;
-      width: 40px;
+      height: 30px;
+      width: 30px;
+      padding: 10px;
       cursor: pointer;
       position: fixed;
-      top: 45%;
+      top: 0;
       z-index: 999;
       left: 200px;
-      text-align: center;
       line-height: 100px;
       cursor: pointer;
       background: rgba(0,0,0,0.2);
+      .line{
+        height: 1px;
+        width: 30px;
+        background-color: #fff;
+        margin-bottom: 10px;
+      }
     }
     .toggle{
       
