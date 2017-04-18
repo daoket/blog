@@ -114,6 +114,7 @@ export default {
     max-width: 140px;
     max-height: 140px;
     margin-right: 10px;
+    border-radius: 50%;
   }
 }
 @media only screen and (min-width: 600px) {

@@ -51,9 +51,14 @@ export default {
     function loadNews (data) {
       for (let i in data) {
         let html = `<div class="item">
-          <p><span class="see">${data[i].source}</span><span class="time">${data[i].pubDate}</span></p>
+        <a href="${data[i].link}">
+          <p>
+            <span class="see">${data[i].source}</span>
+            <span class="time">${data[i].pubDate}</span>
+          </p>
           <h3>${data[i].title}</h3>
-          <p class="info">${data[i].html}</p>
+          <p class="info">${data[i].desc}</p>
+        </a>
         </div>`
         $(html).appendTo('.news .main')
       }
@@ -114,13 +119,15 @@ export default {
         margin-right: 10px;
       }
       h3{
-        color: green;
+        color: #000;
         font-size: 20px;
+        font-weight: bold;
         margin: 10px;
       }
-      p{
+      p.info{
         line-height: 1.4;
         margin: 10px;
+        color: #333;
       }
     }
   }

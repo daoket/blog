@@ -3,14 +3,17 @@
     <img class="bg" src="./blur.jpg"/>
     <div class="song">
       <div class="list">
-        <p class="msg"><span class="name">歌曲</span><span class="singer">歌手</span><span class="time">时长</span></p>
+        <p class="msg">
+          <span class="name">歌曲</span>
+          <span class="singer">歌手</span>
+          <span class="time">时长</span>
+        </p>
         <ul class="main" >
           <li class="msg" v-for='item in items'>
             <span class="name">{{item.songname}}</span>
             <span class="singer">{{item.singername}}</span>
-            <span class="time">{{item.seconds}}</span>
+            <span class="time">{{item.seconds | timeTransform}}</span>
             <span class="playBtn" @click='playBtn(item.url)'>
-              <img src="./blur.jpg"/>
               <span>播放</span>
             </span>
           </li>
@@ -57,6 +60,12 @@ export default {
       })
     }
   },
+  filters: {
+    timeTransform: function (value) {
+      var seconds = value % 60 >= 10 ? value % 60 : ('0' + value % 60)
+      return parseInt(value / 60) + ':' + seconds
+    }
+  },
   computed: {
     songImg () {
       return this.items[0].albumpic_big
@@ -100,7 +109,7 @@ export default {
     display: flex;
     justify-content: space-around;
     .msg{
-      color: #D9D8D8;
+      color: #FFFFFF;
       margin: 5px;
       display: flex;
       justify-content: space-around;
@@ -142,11 +151,6 @@ export default {
         top: 0;
         z-index: 999;
         overflow: hidden;
-        img{
-          width: 100%;
-          height: 40px;
-          filter: blur(40px);
-        }
         span{
           position: absolute;
           color: #fff;

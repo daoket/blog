@@ -2,18 +2,20 @@
   <div class="movie">
     <h2 class="top">{{title}}</h2>
     <div class="main">
-      <div class="item" v-for='m in movieData'>
-        <h2 class='title'>{{m.title}}</h2>
-        <img :src="movieImg(m.images.large)"/>
-        <div class='msg'>
-          <!--<p>排名：</p>-->
-          <p>评分：{{m.rating.average}}</p>
-          <p>导演：{{m.directors[0].name}}</p>
-          <p>主演：{{m.casts[0].name}}</p>
-          <p>原名：{{m.original_title}}</p>
-          <p>看过人数：{{m.collect_count}}</p>
-          <p>年代：{{m.year}}</p>
-        </div>
+      <div class="item" v-for='(m, index) in movieData'>
+        <a :href="movieSrc(m.alt)">
+          <h2 class='title'>{{m.title}}</h2>
+          <img :src="movieImg(m.images.large)"/>
+          <div class='msg'>
+            <p>排名：{{index + 1}}</p>
+            <p>评分：{{m.rating.average}}</p>
+            <p>导演：{{m.directors[0].name}}</p>
+            <p>主演：{{m.casts[0].name}}</p>
+            <p>原名：{{m.original_title}}</p>
+            <p>看过人数：{{m.collect_count}}</p>
+            <p>年代：{{m.year}}</p>
+          </div>
+        </a>
       </div>
     </div>
     <button class="loadMore" v-show='btnStatus'>{{loadBtn}}</button>
@@ -35,9 +37,18 @@ export default {
     }
   },
   created () {
+    let count = 0
     let self = this
-    let movieUrl = 'https://api.douban.com/v2/movie/top250?start=0'
-    askData(movieUrl)
+    let movieUrl = 'https://api.douban.com/v2/movie/top250?start='
+    askData(movieUrl + count)
+    window.onscroll = function () {
+      let leaveBottom = document.body.scrollHeight - (document.body.scrollTop + window.innerHeight)
+      console.log(leaveBottom)
+      if (leaveBottom < 1) {
+        count += 20
+        askData(movieUrl + count)
+      }
+    }
     function askData (url) {
       $.ajax({
         type: 'get',
@@ -47,7 +58,7 @@ export default {
         async: true,
         success: function (res) {
           $('.load').hide()
-          self.movieData = res.subjects
+          self.movieData = self.movieData.concat(res.subjects)
         },
         error: function (err) {
           console.log(err)
@@ -56,6 +67,9 @@ export default {
     }
   },
   methods: {
+    movieSrc (src) {
+      return src
+    },
     movieImg (url) {
       return url
     }
