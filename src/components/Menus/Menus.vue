@@ -104,8 +104,9 @@ export default {
       width: 100%;
       display: flex;
       font-size: 20px;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
+      padding-left: 40px;
       span{
         margin:  0 15px;
       }
