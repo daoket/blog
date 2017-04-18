@@ -86,6 +86,8 @@ export default {
       display: inline-block;
       margin: 10px;
       a{
+        color: #333;
+        text-decoration: none !important;
         display: flex;
         justify-content: flex-start;
         h4{
