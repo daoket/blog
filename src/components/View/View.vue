@@ -22,7 +22,11 @@ export default {
   created () {
     let page = 1
     let url = 'https://api.unsplash.com/photos?client_id=80f66654628683dc7a20a3f2b44a93f8a9f0afaa41be7c7c392c5648dc6bb035&page='
-    askData(url + page)
+    setInterval(function () {
+      if (document.body.scrollHeight < window.innerHeight) {
+        askData(url + page)
+      }
+    }, 200)
     window.onscroll = function () {
       var leaveBottom = (document.body.scrollHeight - document.body.scrollTop - window.innerHeight)
       if (leaveBottom < 1) {
