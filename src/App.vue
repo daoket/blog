@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <Menus></Menus>
-    <router-view></router-view>
+    <blog-menu></blog-menu>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -10,7 +12,7 @@ import Menus from '@/components/Menus'
 export default {
   name: 'app',
   components: {
-    Menus
+    'blog-menu': Menus
   }
 }
 </script>
