@@ -1,7 +1,7 @@
 <template>
   <div class="welcome">
     <div class="dialog">
-      <img src="./girl.jpg"/>
+      <img src="../assets/welcome/girl.jpg"/>
       <h1>{{title}}</h1>
       <p>{{msg1}}</p>
       <p>{{msg2}}</p>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Load from '../Load/Load'
+import Load from './Load'
 export default {
   name: 'welcome',
   data () {
@@ -20,7 +20,8 @@ export default {
       title: '叩首为梦 码梦为生',
       msg1: '从明天起, 做一个幸福的人, 喂马, 劈柴, 周游世界 ',
       msg2: '一个人有两个我，一个在黑暗中醒着，一个在光明中睡着。',
-      msg3: '若我会见到你，事隔经年。我如何向你招呼，以眼泪，以沉默。'
+      msg3: '若我会见到你，事隔经年。我如何向你招呼，以眼泪，以沉默。',
+      welImg: require('../assets/welcome/welcome.jpg')
     }
   },
   created () {

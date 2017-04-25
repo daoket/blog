@@ -1,16 +1,19 @@
 <template>
-  <div class="menus hide">
+  <div class="menus toggle">
+    <span class="open" @click='showMenu'>
+      <div class="line" v-for='i in 3'></div>
+    </span>
     <div class="user">
-      <a target="_blank" href="https://github.com/daoket"><img src="./user.jpg"/></a>
+      <a target="_blank" href="https://github.com/daoket"><img src="../assets/menus/user.jpg"/></a>
       <p>东都花神</p>
     </div>
     <ul class="aside">
-    	<li v-for='todo in todos'>
-    	  <router-link :to='setPath(todo.path)'>
+    	<li v-for='menu in menus'>
+    	  <router-link :to='setPath(menu.path)'>
     	    <svg class="icon" aria-hidden="true">
-            <use :xlink:href='setXlink(todo.xlink)'></use>
+            <use :xlink:href='setXlink(menu.xlink)'></use>
           </svg>
-    	    <span>{{todo.text}}</span>
+    	    <span>{{menu.text}}</span>
     	  </router-link>
     	</li>
     </ul>
@@ -18,11 +21,12 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'menus',
   data () {
     return {
-      todos: [{
+      menus: [{
         text: '首页',
         path: '/welcome',
         xlink: '#icon-shouye'
@@ -44,7 +48,7 @@ export default {
         xlink: '#icon-dianying'
       }, {
         text: '风景',
-        path: '/view',
+        path: '/picture',
         xlink: '#icon-fengjing'
       }, {
         text: '关于我',
@@ -59,6 +63,9 @@ export default {
     },
     setXlink (xlink) {
       return xlink
+    },
+    showMenu () {
+      $('.menus').toggleClass('toggle')
     }
   }
 }
@@ -75,9 +82,30 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
-  overflow: scroll;
+  z-index: 9999;
   transition: all 1s;
   text-align: center;
+  .open{
+    display: none;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    padding: 10px 0 0 8px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: -39px;
+    z-index: 999;
+    line-height: 100px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.2);
+    .line{
+      height: 1px;
+      width: 20px;
+      background-color: #fff;
+      margin-bottom: 6px;
+    }
+  }
   .aside .active{
     color: #fff;
     background: #1A1A1A;
@@ -101,7 +129,6 @@ export default {
     margin: 15px 0;
     a{
       height: 100%;
-      width: 100%;
       display: flex;
       font-size: 20px;
       justify-content: flex-start;
@@ -116,6 +143,22 @@ export default {
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  #app{
+    padding-left: 0;
+    .open{
+      display: block;
+    }
+    .load{
+      left: 0;
+    }
+  }
+  .toggle{
+    transform: translateX(-100%);
+  }
+}
+
 .icon {
   /* 通过设置 font-size 来改变图标大小 */
   width: 25px; height: 25px;

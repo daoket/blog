@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Load from '../Load/Load'
+import Load from './Load'
 export default {
   name: 'me',
   data () {
@@ -31,7 +31,7 @@ export default {
   height: 100%;
   width: 100%;
   display: flex;
-  background: url(https://daoket.github.io/resume/images/blog/me_bg.jpg) no-repeat;
+  /*background: url(https://daoket.github.io/resume/images/blog/me_bg.jpg) no-repeat;*/
   /*background: url(http://1.wtniu.applinzi.com/niu/resume/images/blog/me_bg.jpg) no-repeat;*/
   background-size: 100% 100%;
   justify-content: center;
@@ -40,7 +40,7 @@ export default {
     height: 40px;
     width: 100px;
     font-size: 25px;
-    color: #FFFFFF;
+    color: #40A5ED;
     text-align: center;
     line-height: 40px;
     display: inline-block;

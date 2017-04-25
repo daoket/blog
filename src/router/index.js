@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Welcome from '@/components/Welcome/Welcome'
-import Story from '@/components/Story/Story'
-import Music from '@/components/Music/Music'
-import News from '@/components/News/News'
-import Movie from '@/components/Movie/Movie'
-import View from '@/components/View/View'
-import Me from '@/components/Me/Me'
+import Welcome from '@/components/Welcome'
+import Story from '@/components/Story'
+import Music from '@/components/Music'
+import News from '@/components/News'
+import Movie from '@/components/Movie'
+import Picture from '@/components/Picture'
+import Me from '@/components/Me'
 
 Vue.use(Router)
 
@@ -33,8 +33,8 @@ export default new Router({
       path: '/movie',
       component: Movie
     }, {
-      path: '/view',
-      component: View
+      path: '/picture',
+      component: Picture
     }, {
       path: '/me',
       component: Me

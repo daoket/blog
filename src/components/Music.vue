@@ -1,6 +1,6 @@
 <template>
   <div class="music">
-    <img class="bg" src="./blur.jpg"/>
+    <img class="bg" src="../assets/music/blur.jpg"/>
     <div class="song">
       <div class="list">
         <p class="msg">

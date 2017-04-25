@@ -25,7 +25,7 @@
 
 <script>
 import $ from 'jquery'
-import Load from '../Load/Load'
+import Load from './Load'
 export default {
   name: 'movie',
   data () {
